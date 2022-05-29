@@ -14,11 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
-
 @Entity
 @Table(name = "transaksi")
-@Data
 public class Transaksi implements Serializable{
 
     private static final long serialVersionUID = 5267477979559610248L;
@@ -49,4 +46,68 @@ public class Transaksi implements Serializable{
 
     @Column(name = "status")
     private String status;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<PaymentHistory> getPaymentHistory() {
+        return paymentHistory;
+    }
+
+    public void setPaymentHistory(List<PaymentHistory> paymentHistory) {
+        this.paymentHistory = paymentHistory;
+    }
+
+    public Users getPeminjam() {
+        return peminjam;
+    }
+
+    public void setPeminjam(Users peminjam) {
+        this.peminjam = peminjam;
+    }
+
+    public Users getMeminjam() {
+        return meminjam;
+    }
+
+    public void setMeminjam(Users meminjam) {
+        this.meminjam = meminjam;
+    }
+
+    public int getTenor() {
+        return tenor;
+    }
+
+    public void setTenor(int tenor) {
+        this.tenor = tenor;
+    }
+
+    public Double getTotal_pinjaman() {
+        return total_pinjaman;
+    }
+
+    public void setTotal_pinjaman(Double total_pinjaman) {
+        this.total_pinjaman = total_pinjaman;
+    }
+
+    public Double getBunga_persen() {
+        return bunga_persen;
+    }
+
+    public void setBunga_persen(Double bunga_persen) {
+        this.bunga_persen = bunga_persen;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
