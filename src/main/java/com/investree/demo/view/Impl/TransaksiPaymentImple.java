@@ -1,6 +1,7 @@
 package com.investree.demo.view.Impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.investree.demo.dto.TransaksiCreateRequestDTO;
@@ -10,10 +11,16 @@ import com.investree.demo.repository.TransaksiRepository;
 import com.investree.demo.repository.UserRepository;
 import com.investree.demo.view.TransaksiService;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service @Slf4j
 public class TransaksiPaymentImple implements TransaksiService{
 
     @Autowired
@@ -50,6 +57,14 @@ public class TransaksiPaymentImple implements TransaksiService{
         Map<Integer, Transaksi> map = new HashMap<>();
         map.put(1, transaksi);
         return map;
+    }
+
+    @Override
+    public Page<Transaksi> list(int page, int size, String status) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Transaksi> transaksis;
+        transaksis = transaksiRepository.findAll(pageable);
+        return transaksis;
     }
     
 }

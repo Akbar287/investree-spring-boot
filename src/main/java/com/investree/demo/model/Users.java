@@ -1,6 +1,7 @@
 package com.investree.demo.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,10 +27,10 @@ public class Users implements Serializable{
     private Long id;
 
     @OneToMany(mappedBy = "peminjam")
-    private Transaksi peminjam;
+    private List<Transaksi> peminjam;
 
     @OneToMany(mappedBy = "meminjam")
-    private Transaksi meminjam;
+    private List<Transaksi> meminjam;
 
     @OneToOne(mappedBy = "user")
     private UserDetail userDetail;
