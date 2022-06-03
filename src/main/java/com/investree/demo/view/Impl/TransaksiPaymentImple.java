@@ -52,4 +52,13 @@ public class TransaksiPaymentImple implements TransaksiService{
         return map;
     }
     
+    
+    @Override
+    public Page<Transaksi> list(int page, int size, String status) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Transaksi> transaksis;
+        transaksis = transaksiRepository.findAll(pageable);
+        return transaksis;
+    }
+    
 }
