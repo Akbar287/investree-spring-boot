@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TransaksiRepository extends JpaRepository<Transaksi, Long>{
-    
+     @Query(value = "SELECT * FROM transaksi", nativeQuery = true)
+     Page<Transaksi> findAll(Pageable pageable);
 }
